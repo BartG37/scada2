@@ -9,7 +9,7 @@ MainWindow::MainWindow(ser* ser1, model* model1, QWidget *parent)
 {
     qDebug() << "MainWindow-konstruktor: ";
     ui->setupUi(this);
-    QVector<bg*> TagItem(27,nullptr);
+    QVector<bg*> TagItem(28,nullptr);
     qDebug() << TagItem.size();
     setTagItem();
     setTagItem_cfg();
