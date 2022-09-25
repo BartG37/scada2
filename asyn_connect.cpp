@@ -15,7 +15,7 @@ void asyn_connect::run()
     serItm = new ser;
 //    serIts.push_back(new ser(nullptr));
     timer = new QTimer(0);
-    timer->setInterval(10);
+    timer->setInterval(1000);
     timer->connect(timer, SIGNAL(timeout()), serItm, SLOT(processing()));
 //    timer->connect(timer, SIGNAL(timeout()), modelIts, SLOT(processing()));
     timer->start();

@@ -20,7 +20,7 @@ model::model(QThread *parent) : QThread(parent)
 
     {
     qDebug() << "model::run: ";
-    as2->msleep(10);
+    as2->msleep(1000);
     setdata(serItm2->pocket);
     }
     }
