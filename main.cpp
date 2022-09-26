@@ -15,9 +15,9 @@ int main(int argc, char *argv[])
     model omodel;
 
 
-//    while (!o_as.serItm)
-//    qDebug() << "!!!!!!!!!!!!!!!!"<<o_as.serItm;
-//    qDebug() << "----------------" <<o_as.serItm;
+    while (!o_as.serItm)
+    qDebug() << "!!!!!!!!!!!!!!!!"<<o_as.serItm;
+    qDebug() << "----------------" <<o_as.serItm;
 
     omodel.addObjects(o_as.serItm,&w);
     omodel.start();
