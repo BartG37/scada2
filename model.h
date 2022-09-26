@@ -6,11 +6,12 @@
 #include <QMutex>
 #include <QThread>
 #include <QDebug>
-#include "ser.h"
-//#include "mainwindow.h"
 
 
-class model : public QThread
+class MainWindow;
+class ser;
+
+class model :  public QThread
 {
     Q_OBJECT
 
@@ -18,24 +19,23 @@ public:
 
     explicit model(QThread *parent = nullptr);
     ~model();
-    void  run();
     QVector<int>& getdata(const QVector<int>&);
-    void setdata(const ser::pocket_u&);
-    QMutex mutex;
     QVector<double>* values1 = nullptr;
-    QThread *as2;
-    ser *serItm2;
-    void addObjects(ser* sern=nullptr);
+    void addObjects(ser* ser_n=nullptr,MainWindow* MainWindow_n=nullptr);
+    void setdata();
+    void notify();
+    void  run() override;
 public:
-    ser::pocket_u pocket;
 
 public slots:
     void processing();
-    void writeFinish2(ser::pocket_u pocket);
 
 private:
     bool isFinishing=0;
-
+    QMutex mutex;
+    QThread *as2;
+    ser *serItm2=nullptr;
+    MainWindow *mainwindowItm=nullptr;
 };
 
 

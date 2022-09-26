@@ -1,6 +1,7 @@
 #include "bg.h"
 #include "QDebug"
 
+int bg::lpbg=0;
 
 bg::bg(QWidget *parent):QWidget(parent)
 {
@@ -38,4 +39,6 @@ bg::~bg()
     delete value;
 
 }
+
+
 

@@ -37,7 +37,7 @@ void ser::start(QString adresn)
      else
          qDebug() << "tcpSocket not ok: ";
 
-    emit writeFinish();
+
 }
 
 bool ser::isConnected()
@@ -55,7 +55,7 @@ qDebug() << "read_on";
 //    qDebug() << "indata: " <<pocket.field.mdb_reg[0]<<pocket.field.mdb_reg[1];
     qDebug() << "indata: " << dat;
 
-    emit writeFinish();
+
 }
 
 
@@ -87,7 +87,6 @@ void ser::processing()
 {
 
     isConnected() ? write_on() : start(adres);
-    ++cv;
 
 }
 

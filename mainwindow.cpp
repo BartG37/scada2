@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-
+#include "model.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -24,8 +24,6 @@ MainWindow::~MainWindow()
 {
     qDebug() << "~MainWindow(): ";
     delete ui;
-//    delete ser1;
-//    delete model1;
 
 }
 
@@ -53,19 +51,18 @@ void MainWindow::setTagItem_cfg()
 
 }
 
-void MainWindow::update(const model* modeln)
+void MainWindow::update()
 {
+
     for (auto i=0; i<TagItem.size(); ++i)
-    TagItem[i]->value->setValue(modeln->values1->value(i));
+    TagItem[i]->value->setValue(modelItm->values1->value(i));
+
 
 }
 
 
-
-
-
-
-
-
-
+void MainWindow::addObjects(model *modeln)
+{
+    modelItm=modeln;
+}
 

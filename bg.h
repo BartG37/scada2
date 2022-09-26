@@ -25,3 +25,4 @@ public:
 
 
 #endif // BG_H
+

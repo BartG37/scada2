@@ -1,38 +1,29 @@
-#include "mainwindow.h"
-#include "ser.h"
-//#include <qnetwork.h>
-//#include <QtNetwork/QUdpSocket>
-#include <QtNetwork/QTcpServer>
-
 #include <QApplication>
-#include "QDebug"
-#include "bg.h"
+#include <QDebug>
+#include "mainwindow.h"
 #include "ser.h"
 #include "model.h"
 #include "asyn_connect.h"
 
 
-
-int bg::lpbg=0;
-
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    model omodel;
-    ser oser;
+
     asyn_connect o_as;
     MainWindow w;
+    model omodel;
 
 
-    while (!o_as.serItm)
-    qDebug() << "!!!!!!!!!!!!!!!!"<<o_as.serItm;
-    qDebug() << "----------------" <<o_as.serItm;
+//    while (!o_as.serItm)
+//    qDebug() << "!!!!!!!!!!!!!!!!"<<o_as.serItm;
+//    qDebug() << "----------------" <<o_as.serItm;
 
-    omodel.addObjects(o_as.serItm);
+    omodel.addObjects(o_as.serItm,&w);
     omodel.start();
-    _sleep(10000);
-    w.update(&omodel);
-    a.connect(w.ui->pushButton_2, SIGNAL(clicked()), o_as.serItm, SLOT(write_on()));
+    w.addObjects(&omodel);
+
+//    a.connect(w.ui->pushButton_2, SIGNAL(clicked()), o_as.serItm, SLOT(write_on()));
 //    o_as.connect(&o_as, SIGNAL(finished(ser::pocket_u)), &omodel, SLOT(writeFinish2(ser::pocket_u)));
 
 

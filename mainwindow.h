@@ -6,12 +6,14 @@
 #include <QVector>
 #include <bg.h>
 #include "./ui_mainwindow.h"
-#include "model.h"
+
 
 //QT_BEGIN_NAMESPACE
 //namespace Ui { class MainWindow; }
 //QT_END_NAMESPACE
 
+
+class model;
 
 class MainWindow : public QMainWindow
 {
@@ -22,7 +24,8 @@ public:
     ~MainWindow();
     void setTagItem(void);
     void setTagItem_cfg(void);
-    void update(const model*);
+    void addObjects(model* modeln);
+    void update();
 public slots:
     void pushButton_on();
     void show()
@@ -36,9 +39,14 @@ public:
     Ui::MainWindow *ui=nullptr;
     QVector<bg*> TagItem;
 
+private:
+    model* modelItm=nullptr;
+
 
 
 };
+
+
 
 
 
