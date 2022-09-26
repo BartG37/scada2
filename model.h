@@ -6,8 +6,8 @@
 #include <QMutex>
 #include <QThread>
 #include <QDebug>
-#include "bg.h"
 #include "ser.h"
+//#include "mainwindow.h"
 
 
 class model : public QThread
@@ -22,7 +22,7 @@ public:
     QVector<int>& getdata(const QVector<int>&);
     void setdata(const ser::pocket_u&);
     QMutex mutex;
-    QVector<float>* values1 = nullptr;
+    QVector<double>* values1 = nullptr;
     QThread *as2;
     ser *serItm2;
     void addObjects(ser* sern=nullptr);

@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     model omodel;
     ser oser;
     asyn_connect o_as;
-    MainWindow w(&oser,nullptr);
+    MainWindow w;
 
 
     while (!o_as.serItm)
@@ -30,7 +30,8 @@ int main(int argc, char *argv[])
 
     omodel.addObjects(o_as.serItm);
     omodel.start();
-
+    _sleep(10000);
+    w.update(&omodel);
     a.connect(w.ui->pushButton_2, SIGNAL(clicked()), o_as.serItm, SLOT(write_on()));
 //    o_as.connect(&o_as, SIGNAL(finished(ser::pocket_u)), &omodel, SLOT(writeFinish2(ser::pocket_u)));
 

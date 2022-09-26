@@ -1,11 +1,10 @@
 #include "mainwindow.h"
 
 
-MainWindow::MainWindow(ser* ser1, model* model1, QWidget *parent)
+MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , ser1(ser1)
-    , model1(model1)
+
 {
     qDebug() << "MainWindow-konstruktor: ";
     ui->setupUi(this);
@@ -14,7 +13,7 @@ MainWindow::MainWindow(ser* ser1, model* model1, QWidget *parent)
     setTagItem();
     setTagItem_cfg();
     //connect(ui->pushButton, SIGNAL(clicked()),this,SLOT(pushButton_on()));
-    connect(ui->pushButton, SIGNAL(clicked()),this,SLOT(fcn1()));
+//    connect(ui->pushButton, SIGNAL(clicked()),this,SLOT(update()));
 //    connect(ui->pushButton_2, SIGNAL(clicked()),this,SLOT(fcn2()));
 
 
@@ -36,10 +35,6 @@ void MainWindow::pushButton_on()
 
 }
 
-void MainWindow::fcn1() {model1->setdata(ser1->pocket);}
-
-void MainWindow::fcn2() {model1->setdata(ser1->pocket);}
-
 void MainWindow::setTagItem()
 {
 
@@ -55,4 +50,22 @@ void MainWindow::setTagItem_cfg()
     TagItem[1]->tag->setText("G10FT102 m3/h");
     TagItem[2]->tag->setText("G10PT101 Bar");
     TagItem[3]->tag->setText("G10PT101 Bar");
+
 }
+
+void MainWindow::update(const model* modeln)
+{
+    for (auto i=0; i<TagItem.size(); ++i)
+    TagItem[i]->value->setValue(modeln->values1->value(i));
+
+}
+
+
+
+
+
+
+
+
+
+

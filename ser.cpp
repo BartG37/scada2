@@ -51,8 +51,8 @@ void ser::read_on()
 {
 qDebug() << "read_on";
     dat = tcpSocket->read(pocket.raw, sizeof(pocket.raw));
-    qDebug() << "indata: " << pocket.field.tid<< pocket.field.pid<< pocket.field.offset<< pocket.field.device<< pocket.field.fcnNo<< pocket.field.dat_lenght;
-    qDebug() << "indata: " <<pocket.field.mdb_reg[0]<<pocket.field.mdb_reg[1];
+//    qDebug() << "indata: " << pocket.field.tid<< pocket.field.pid<< pocket.field.offset<< pocket.field.device<< pocket.field.fcnNo<< pocket.field.dat_lenght;
+//    qDebug() << "indata: " <<pocket.field.mdb_reg[0]<<pocket.field.mdb_reg[1];
     qDebug() << "indata: " << dat;
 
     emit writeFinish();

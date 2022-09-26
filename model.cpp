@@ -3,7 +3,7 @@
 model::model(QThread *parent) : QThread(parent)
 {
     qDebug() << "model konstruktor";
-    values1 = new QVector<float>(ser::values_size,0.0);
+    values1 = new QVector<double>(ser::values_size,0.0);
 //    v.push_back(mw->ui->G10FT101);
 //    v.push_back(mw->ui->G10FT102);
     //mw->ui->G10FT101->tag->setText("sdsds");
@@ -44,8 +44,8 @@ void model::setdata(const ser::pocket_u& n)
 
     for( int i=0; i<ser::values_size; ++i)
     {
-        (*values1)[i]=static_cast<float>(n.field.mdb_reg[i]);
-        qDebug() <<(*values1)[i]<<" " <<i<<" " <<n.field.mdb_reg[i];
+        (*values1)[i]=static_cast<double>(n.field.mdb_reg[i]);
+//        qDebug() <<(*values1)[i]<<" " <<i<<" " <<n.field.mdb_reg[i];
     }
 
     mutex.unlock();
@@ -80,4 +80,3 @@ void model::writeFinish2(ser::pocket_u pocket)
 
     qDebug() << "model::writeFinish2 - po: ";
 }
-
