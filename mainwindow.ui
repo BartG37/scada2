@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>628</width>
-    <height>323</height>
+    <width>931</width>
+    <height>469</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -131,6 +131,16 @@
      <string>write</string>
     </property>
    </widget>
+   <widget class="QListWidget" name="listWidget">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>340</y>
+      <width>541</width>
+      <height>61</height>
+     </rect>
+    </property>
+   </widget>
    <zorder>groupBox</zorder>
    <zorder>pushButton</zorder>
    <zorder>verticalLayoutWidget</zorder>
@@ -138,13 +148,14 @@
    <zorder>verticalLayoutWidget_3</zorder>
    <zorder>verticalLayoutWidget_4</zorder>
    <zorder>pushButton_2</zorder>
+   <zorder>listWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>628</width>
+     <width>931</width>
      <height>21</height>
     </rect>
    </property>
