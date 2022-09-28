@@ -20,8 +20,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->listWidget->insertItem(0,"nowy4");
     ui->listWidget->insertItem(0,"nowy5");
     ui->listWidget->insertItem(0,"nowy6");
-    //nowy2
-    ui->listWidget->insertItem(0,"nowy7");
 
     //connect(ui->pushButton, SIGNAL(clicked()),this,SLOT(pushButton_on()));
 //    connect(ui->pushButton, SIGNAL(clicked()),this,SLOT(update()));
