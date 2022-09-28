@@ -16,10 +16,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->listWidget->addItem("nananananna2");
     ui->listWidget->insertItem(0,"nowy");
     ui->listWidget->insertItem(0,"nowy2");
+    ui->listWidget->insertItem(0,"nowy3");
     //connect(ui->pushButton, SIGNAL(clicked()),this,SLOT(pushButton_on()));
 //    connect(ui->pushButton, SIGNAL(clicked()),this,SLOT(update()));
 //    connect(ui->pushButton_2, SIGNAL(clicked()),this,SLOT(fcn2()));
-
 
 
 }
