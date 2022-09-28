@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
     omodel.start();
     w.addObjects(&omodel);
 //  do usuniecia
+//  do usuniecia
 //    a.connect(w.ui->pushButton_2, SIGNAL(clicked()), o_as.serItm, SLOT(write_on()));
 //    o_as.connect(&o_as, SIGNAL(finished(ser::pocket_u)), &omodel, SLOT(writeFinish2(ser::pocket_u)));
 
