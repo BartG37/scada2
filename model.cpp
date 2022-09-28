@@ -1,28 +1,26 @@
 #include "model.h"
+#include "ser.h"
+#include "mainwindow.h"
 
 model::model(QThread *parent) : QThread(parent)
 {
     qDebug() << "model konstruktor";
-    values1 = new QVector<float>(ser::values_size,0.0);
-//    v.push_back(mw->ui->G10FT101);
-//    v.push_back(mw->ui->G10FT102);
-    //mw->ui->G10FT101->tag->setText("sdsds");
+    values1 = new QVector<double>(ser::values_size,0.0);
     as2=new QThread;
-
-//    v[0]->tag->setText("G10FT101 [ccc/h]");
 
 }
 
     void model::run()
     {
 
-    while(!isFinishing)
+        while(!isFinishing)
 
-    {
-    qDebug() << "model::run: ";
-    as2->msleep(10);
-    setdata(serItm2->pocket);
-    }
+        {
+        qDebug() << "model::run: ";
+        as2->msleep(1000);
+        setdata();
+
+        }
     }
 
 model::~model()
@@ -37,33 +35,43 @@ model::~model()
 
 }
 
-void model::setdata(const ser::pocket_u& n)
+void model::setdata()
 {
+    if (1)
+    {
     qDebug() << "model::setdata: ";
     mutex.lock();
 
     for( int i=0; i<ser::values_size; ++i)
     {
-        (*values1)[i]=static_cast<float>(n.field.mdb_reg[i]);
-        qDebug() <<(*values1)[i]<<" " <<i<<" " <<n.field.mdb_reg[i];
-    }
+        (*values1)[i]=static_cast<double>(serItm2->pocket.field.mdb_reg[i]);
 
+    }
+    notify();
     mutex.unlock();
     qDebug() << "model::setdata - po: ";
+    }
 }
 
-void model::addObjects(ser *sern)
+void model::addObjects(ser* ser_n,MainWindow* MainWindow_n)
 {
     qDebug() << "model::addObjects: ";
-    serItm2 = sern;
+    serItm2 = ser_n;
+    mainwindowItm = MainWindow_n;
 
+}
+
+void model::notify()
+{
+    qDebug() << "model::notify: ";
+    mainwindowItm->update();
+    qDebug() << "model::notify - po";
 }
 
 void model::processing()
 {
     qDebug() << "model::processing: ";
     mutex.lock();
-
 
     for( int i=0; i<ser::values_size; ++i)
     {
@@ -73,11 +81,3 @@ void model::processing()
     mutex.unlock();
     qDebug() << "model::processing - po: ";
 }
-
-void model::writeFinish2(ser::pocket_u pocket)
-{
-    qDebug() << "model::writeFinish2: ";
-
-    qDebug() << "model::writeFinish2 - po: ";
-}
-

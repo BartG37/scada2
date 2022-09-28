@@ -1,22 +1,27 @@
 #include "mainwindow.h"
+#include "model.h"
 
-
-MainWindow::MainWindow(ser* ser1, model* model1, QWidget *parent)
+MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , ser1(ser1)
-    , model1(model1)
+
 {
     qDebug() << "MainWindow-konstruktor: ";
     ui->setupUi(this);
-    QVector<bg*> TagItem(51,nullptr);
+    QVector<bg*> TagItem(42,nullptr);
     qDebug() << TagItem.size();
     setTagItem();
     setTagItem_cfg();
+    ui->listWidget->addItem("nananananna");
+    ui->listWidget->addItem("nananananna2");
+    ui->listWidget->insertItem(0,"nowy");
+    ui->listWidget->insertItem(0,"nowy2");
+    ui->listWidget->insertItem(0,"nowy3");
+    ui->listWidget->insertItem(0,"nowy4");
+    ui->listWidget->insertItem(0,"nowy5");
     //connect(ui->pushButton, SIGNAL(clicked()),this,SLOT(pushButton_on()));
-    connect(ui->pushButton, SIGNAL(clicked()),this,SLOT(fcn1()));
+//    connect(ui->pushButton, SIGNAL(clicked()),this,SLOT(update()));
 //    connect(ui->pushButton_2, SIGNAL(clicked()),this,SLOT(fcn2()));
-
 
 
 }
@@ -25,8 +30,6 @@ MainWindow::~MainWindow()
 {
     qDebug() << "~MainWindow(): ";
     delete ui;
-//    delete ser1;
-//    delete model1;
 
 }
 
@@ -35,10 +38,6 @@ void MainWindow::pushButton_on()
     qDebug() << "pushButton_on: ";
 
 }
-
-void MainWindow::fcn1() {model1->setdata(ser1->pocket);}
-
-void MainWindow::fcn2() {model1->setdata(ser1->pocket);}
 
 void MainWindow::setTagItem()
 {
@@ -55,4 +54,21 @@ void MainWindow::setTagItem_cfg()
     TagItem[1]->tag->setText("G10FT102 m3/h");
     TagItem[2]->tag->setText("G10PT101 Bar");
     TagItem[3]->tag->setText("G10PT101 Bar");
+
 }
+
+void MainWindow::update()
+{
+
+    for (auto i=0; i<TagItem.size(); ++i)
+    TagItem[i]->value->setValue(modelItm->values1->value(i));
+
+
+}
+
+
+void MainWindow::addObjects(model *modeln)
+{
+    modelItm=modeln;
+}
+

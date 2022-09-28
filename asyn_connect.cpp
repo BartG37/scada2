@@ -1,4 +1,6 @@
 #include "asyn_connect.h"
+#include <ser.h>
+#include <model.h>
 
 asyn_connect::asyn_connect(QThread *parent) : QThread(parent)
 {
@@ -15,9 +17,9 @@ void asyn_connect::run()
     serItm = new ser;
 //    serIts.push_back(new ser(nullptr));
     timer = new QTimer(0);
-    timer->setInterval(10);
+    timer->setInterval(1000);
     timer->connect(timer, SIGNAL(timeout()), serItm, SLOT(processing()));
-//    timer->connect(timer, SIGNAL(timeout()), modelIts, SLOT(processing()));
+    timer->connect(timer, SIGNAL(timeout()), this, SLOT(fcn2()));
     timer->start();
 //    serIts[0]->start("127.0.0.1");
 //    serIts[0]->write_on();
@@ -26,7 +28,7 @@ void asyn_connect::run()
 
 
     delete serItm;
-//    delete timer;
+    delete timer;
     qDebug() << "asyn_connect::msleep(): - po";
 
 }
@@ -34,8 +36,8 @@ void asyn_connect::run()
 void asyn_connect::addObjects(ser* sern, model* modeln)
 {
 
-    modelIts=modeln;
-    serItm = sern;
+//    modelIts=modeln;
+//    serItm = sern;
 }
 
 void asyn_connect::fcn3()
@@ -73,4 +75,9 @@ void asyn_connect::fcn1()
 
 }
 
-void asyn_connect::fcn2() {modelIts->setdata(serIts[0]->pocket);}
+void asyn_connect::fcn2()
+
+{
+
+}
+

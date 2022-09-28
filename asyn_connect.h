@@ -6,9 +6,9 @@
 #include <QMutex>
 #include <QTimer>
 #include <QVector>
-#include <ser.h>
-#include <model.h>
 
+class model;
+class ser;
 
 class asyn_connect : public QThread
 {
@@ -25,10 +25,9 @@ public slots:
     void fcn1(void);
     void fcn2(void);
     void fcn3(void);
-//    int exec();
 
 signals:
-    void finished(ser::pocket_u);
+    void finished();
 public:
     QThread* as1=nullptr;
     QTimer* timer=nullptr;
