@@ -51,7 +51,7 @@ void MainWindow::setTagItem_cfg()
     TagItem[0]->tag->setText("G10FT101 m3/h");
     TagItem[1]->tag->setText("G10FT102 m3/h");
     TagItem[2]->tag->setText("G10PT101 Bar");
-    TagItem[3]->tag->setText("G10PT101 mbar");
+    TagItem[3]->tag->setText("G10PT101 Bar");
 
 }
 
